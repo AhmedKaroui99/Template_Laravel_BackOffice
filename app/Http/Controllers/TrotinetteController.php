@@ -17,8 +17,10 @@ class TrotinetteController extends Controller
 
       
         // $trotinettes = Trotinette::orderBy('id','desc')->paginate(5);
-        $trotinettes = Trotinette::with('categoryT')->get();
-        return view('trotinettes.index', compact('trotinettes'));
+        $trotinettes = (new Trotinette)->orderBy('id','desc')->paginate(10000);
+        $categoriets = (new CategorieT)->orderBy('id','desc')->paginate(10000);
+
+         return view('trotinettes.index', compact('trotinettes','categoriets'));
 
         // $trotinettes = Trotinette::with('CategorieTrotinette')->get();
         // return view('trotinettes.index', compact('trotinettes'));
